@@ -8,15 +8,6 @@ class StoreList extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            children: [
-              Text('Tiendas'),
-              SizedBox(width: 8), // Espacio entre el texto y la imagen
-              Image.asset('assets/images/logo-utez.png', width: 30, height: 30)
-            ],
-          ),
-        ),
         body: CardListFromJson(),
       ),
     );
@@ -26,7 +17,7 @@ class StoreList extends StatelessWidget {
 class CardListFromJson extends StatelessWidget {
   final String jsonData = '''
   [
-    {"titulo": "Título 1", "subtitulo": "Subtítulo 1"},
+    {"titulo": "Tienda Juanita", "subtitulo": "Subtítulo 1"},
     {"titulo": "Título 2", "subtitulo": "Subtítulo 2"},
     {"titulo": "Título 3", "subtitulo": "Subtítulo 3"}
   ]

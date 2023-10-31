@@ -8,7 +8,13 @@ class Visit extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Account'),
+        title: Row(
+          children: [
+            Text('Tiendas'),
+            SizedBox(width: 8), // Espacio entre el texto y la imagen
+            Image.asset('assets/images/logo-utez.png', width: 30, height: 30)
+          ],
+        ),
         backgroundColor: ColorsApp.primaryColor,
       ),
       body: VisitList(),

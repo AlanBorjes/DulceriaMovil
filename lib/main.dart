@@ -1,5 +1,6 @@
 import 'package:dulceria/kernel/widgets/menu.dart';
 import 'package:dulceria/kernel/widgets/splash.dart';
+import 'package:dulceria/modules/login/adapters/screens/Login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,11 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes: {'/': (context) => Splash(), '/menu': (context) => Menu()},
+      routes: {
+        '/': (context) => Splash(),
+        '/menu': (context) => Menu(),
+        '/login': (context) => Login()
+      },
     );
   }
 }

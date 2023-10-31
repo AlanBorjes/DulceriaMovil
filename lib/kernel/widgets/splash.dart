@@ -13,7 +13,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2),
-        () => Navigator.pushReplacementNamed(context, '/menu'));
+        () => Navigator.pushReplacementNamed(context, '/login'));
   }
 
   @override

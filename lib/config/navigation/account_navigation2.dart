@@ -1,16 +1,17 @@
 import 'package:dulceria/modules/home.dart';
+import 'package:dulceria/modules/login/adapters/screens/Account.dart';
 import 'package:dulceria/modules/login/adapters/screens/Login.dart';
 import 'package:flutter/material.dart';
 
-class HomeNavigation extends StatelessWidget {
-  const HomeNavigation({super.key});
+class AccountNavigation extends StatelessWidget {
+  const AccountNavigation({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/account',
       routes: {
-        '/home': (context) => const Home(),
+        '/account': (context) => const Account(),
       },
     );
   }
