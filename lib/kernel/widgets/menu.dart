@@ -33,15 +33,14 @@ class _MenuState extends State<Menu> {
         body: IndexedStack(
           index: _selectIndex,
           children: const [
-            LoginNavigation(),
-            ListStoreNavigation(),
-            VisitNavigation(),
-            AccountNavigation(),
-            ProductNavigation(),
-            StoreInfoNavigation(),
-            RegisterProductoNavigation(),
-            DeliverNavigation(),
-            OrderNavigation(),
+            ListStoreNavigation(), //si
+            VisitNavigation(), //si
+            //AccountNavigation(),
+            //ProductNavigation(),
+            StoreInfoNavigation(), //si
+            //RegisterProductoNavigation(),
+            //DeliverNavigation(),
+            //OrderNavigation(),
           ],
         ),
         bottomNavigationBar: CustomButtonNavigationTab(

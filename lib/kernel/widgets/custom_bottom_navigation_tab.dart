@@ -15,16 +15,14 @@ class CustomButtonNavigationTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Login'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Visit'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Store'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'products'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'StoreInfo'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.person), label: 'RegisterProduct'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'deliver'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Order'),
+        BottomNavigationBarItem(icon: Icon(Icons.store_outlined), label: 'Tiendas'),
+        BottomNavigationBarItem(icon: Icon(Icons.task_alt_rounded), label: 'Visitas'),
+        //BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
+        //BottomNavigationBarItem(icon: Icon(Icons.person), label: 'products'),
+        BottomNavigationBarItem(icon: Icon(Icons.store_outlined), label: 'Info Tienda'),
+        //BottomNavigationBarItem(icon: Icon(Icons.person), label: 'RegisterProduct'),
+        //BottomNavigationBarItem(icon: Icon(Icons.person), label: 'deliver'),
+        //BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Order'),
       ],
       currentIndex: selectedIndex,
       selectedItemColor: ColorsApp.successColor,

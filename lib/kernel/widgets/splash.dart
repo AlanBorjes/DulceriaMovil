@@ -19,10 +19,37 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.whiteColor,
+      backgroundColor: ColorsApp.primaryColor,
       body: Center(
-          child: Image.asset('assets/images/logo-utez.png',
-              width: 200, height: 150)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              width: 200,
+              height: 200,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: ColorsApp.successColor,
+              ),
+              child: Center(
+                child: Image.asset(
+                  'assets/images/logo_golosinadora.png',
+                  width: 150,
+                  height: 150,
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            // const Text(
+            //   "La Golosinadora",
+            //   style: TextStyle(
+            //     color: ColorsApp.whiteColor,
+            //     fontSize: 24,
+            //   ),
+            // ),
+          ],
+        ),
+      ),
     );
   }
 }
