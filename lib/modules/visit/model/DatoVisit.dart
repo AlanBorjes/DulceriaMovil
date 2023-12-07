@@ -1,16 +1,15 @@
 class DatoVisit {
-  final String titulo;
-  final String subtitulo;
+  final String storeName;
   final String date;
+  final String status;
 
-  DatoVisit(
-      {required this.titulo, required this.subtitulo, required this.date});
+  DatoVisit(this.storeName, this.date, this.status);
 
   factory DatoVisit.fromJson(Map<String, dynamic> json) {
     return DatoVisit(
-      titulo: json['titulo'],
-      subtitulo: json['subtitulo'],
-      date: json['date'],
+      json['store']['name'],
+      json['day_visit'],
+      json['status']['name'],
     );
   }
 }
