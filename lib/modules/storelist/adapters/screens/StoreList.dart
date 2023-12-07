@@ -2,72 +2,69 @@ import 'dart:convert';
 
 import 'package:dulceria/modules/storelist/model/MiDato.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
 
 class StoreList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: CardListFromJson(),
+        body: StoreListScreen(),
       ),
     );
   }
 }
 
-class CardListFromJson extends StatelessWidget {
-  final String jsonData = '''
-  [
-    {"titulo": "Tienda Juanita", "subtitulo": "Subtítulo 1"},
-    {"titulo": "Título 2", "subtitulo": "Subtítulo 2"},
-    {"titulo": "Título 3", "subtitulo": "Subtítulo 3"}
-  ]
-  ''';
+class StoreListScreen extends StatefulWidget {
+  @override
+  _StoreListScreenState createState() => _StoreListScreenState();
+}
+
+class _StoreListScreenState extends State<StoreListScreen> {
+  List<MiDato> stores = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchStores();
+  }
+
+  Future<void> fetchStores() async {
+    final response = await http.get(Uri.parse('http://localhost:8090/api/store/'));
+
+    if (response.statusCode == 200) {
+      final List<dynamic> responseData = json.decode(response.body);
+      setState(() {
+        stores = responseData.map((json) => MiDato.fromJson(json)).toList();
+      });
+    } else {
+      throw Exception('Error al cargar las tiendas :c');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> data = jsonDecode(jsonData);
-    List<MiDato> miListaDeDatos =
-        data.map((item) => MiDato.fromJson(item)).toList();
-
-    return ListView.builder(
-      itemCount: miListaDeDatos.length,
-      itemBuilder: (context, index) {
-        return Card(
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Row(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Lista de Tiendas'),
+      ),
+      body: ListView.builder(
+        itemCount: stores.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(stores[index].name),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Imagen de la tienda a la izquierda
-                Image.asset(
-                  'assets/images/tiendaIcon.png',
-                  width: 80, // Ancho de la imagen
-                  height: 80, // Alto de la imagen
-                ),
-                SizedBox(width: 16), // Espacio entre la imagen y la información
-                // Información de la tienda a la derecha
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      miListaDeDatos[index].titulo,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(
-                      miListaDeDatos[index].subtitulo,
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ),
+                Text('Dueño: ${stores[index].ownerName}'),
+                Text('Repartidor: ${stores[index].deliveryPersonName}'),
+                Text('Ubicación: ${stores[index].location}'),
               ],
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

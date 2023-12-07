@@ -1,13 +1,19 @@
 class MiDato {
-  final String titulo;
-  final String subtitulo;
+  final int id;
+  final String name;
+  final String location;
+  final String ownerName;
+  final String deliveryPersonName;
 
-  MiDato({required this.titulo, required this.subtitulo});
+  MiDato(this.id, this.name, this.location, this.ownerName, this.deliveryPersonName);
 
   factory MiDato.fromJson(Map<String, dynamic> json) {
     return MiDato(
-      titulo: json['titulo'],
-      subtitulo: json['subtitulo'],
+      json['id'] as int,
+      json['name'] as String,
+      json['location'] as String,
+      json['owner']['name'] as String,
+      json['deliveryPerson']['name'] as String,
     );
   }
 }
