@@ -50,7 +50,6 @@ class _LoginState extends State<Login> {
                                   filled: true,
                                   fillColor: Colors.white,
                                   labelText: 'Correo electrónico',
-                                  hintText: 'example@gmail.com',
                                   border: OutlineInputBorder(
                                       borderRadius:
                                           BorderRadius.circular(34.0))),
@@ -76,7 +75,6 @@ class _LoginState extends State<Login> {
                                   filled: true,
                                   fillColor: Colors.white,
                                   labelText: 'Contraseña',
-                                  hintText: '**********',
                                   border: OutlineInputBorder(
                                       borderRadius:
                                           BorderRadius.circular(34.0))),

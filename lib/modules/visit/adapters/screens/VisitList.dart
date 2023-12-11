@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dulceria/kernel/colors/colors_app.dart';
 import 'package:dulceria/modules/storelist/model/MiDato.dart';
 import 'package:dulceria/modules/visit/model/DatoVisit.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,9 @@ class VisitList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: ColorsApp.backGround,
         body: CardVisitListFromJson(),
       ),
     );
@@ -18,9 +21,9 @@ class VisitList extends StatelessWidget {
 class CardVisitListFromJson extends StatelessWidget {
   final String jsonData = '''
   [
-    {"titulo": "Título 1", "subtitulo": "Subtítulo 1" ,"date": "2020-06-08"},
-    {"titulo": "Título 2", "subtitulo": "Subtítulo 2" ,"date": "2020-06-08"},
-    {"titulo": "Título 3", "subtitulo": "Subtítulo 3" ,"date": "2020-06-08"}
+    {"titulo": "Título 1", "subtitulo": "Calle #numero, colonia c.p., municipio" ,"date": "12 de diciembre del 2023"},
+    {"titulo": "Título 2", "subtitulo": "Calle #numero, colonia c.p., municipio" ,"date": "12 de diciembre del 2023"},
+    {"titulo": "Título 3", "subtitulo": "Calle #numero, colonia c.p., municipio" ,"date": "12 de diciembre del 2023"}
   ]
   ''';
 
@@ -33,45 +36,81 @@ class CardVisitListFromJson extends StatelessWidget {
     return ListView.builder(
       itemCount: miListaDeDatos.length,
       itemBuilder: (context, index) {
-        return Card(
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                // Imagen de la tienda a la izquierda
-                Image.asset(
-                  'assets/images/tiendaIcon.png',
-                  width: 80,
-                  height: 80,
-                ),
-                SizedBox(width: 16),
-                // Información de la tienda y fecha a la derecha
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      miListaDeDatos[index].titulo,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
+        return Container(
+          decoration: BoxDecoration(
+            // Ajusta según tu preferencia
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5), // Color de la sombra
+                spreadRadius: 1, // Extensión de la sombra
+                blurRadius: 15, // Difuminado de la sombra
+                offset: Offset(
+                    0, 3), // Desplazamiento de la sombra (horizontal, vertical)
+              ),
+            ],
+          ),
+          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+          child: Card(
+            elevation: 0,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  const CircleAvatar(
+                    backgroundColor: ColorsApp.primaryColor,
+                    foregroundColor: Colors.white,
+                    radius: 40,
+                    child: Icon(
+                      Icons.storefront_rounded,
+                      size: 40,
+                      color: Colors.white,
                     ),
-                    Text(
-                      miListaDeDatos[index].subtitulo,
-                      style: TextStyle(
-                        fontSize: 16,
+                  ),
+                  const SizedBox(width: 12),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        miListaDeDatos[index].titulo,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Fecha: ${miListaDeDatos[index].date}',
-                      style: TextStyle(
-                        fontSize: 14,
+                      Text(
+                        miListaDeDatos[index].subtitulo,
+                        style: const TextStyle(
+                          fontSize: 12,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      Text(
+                        miListaDeDatos[index].date,
+                        style: const TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Text(
+                          'Pendiente',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         );

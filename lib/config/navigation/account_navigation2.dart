@@ -1,3 +1,4 @@
+import 'package:dulceria/modules/Order/adapters/screens/Order.dart';
 import 'package:dulceria/modules/home.dart';
 import 'package:dulceria/modules/login/adapters/screens/Account.dart';
 import 'package:dulceria/modules/login/adapters/screens/Login.dart';
@@ -11,7 +12,7 @@ class AccountNavigation extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/account',
       routes: {
-        '/account': (context) => const Account(),
+        '/account': (context) => const Order(),
       },
     );
   }

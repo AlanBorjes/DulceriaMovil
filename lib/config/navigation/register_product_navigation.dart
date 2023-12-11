@@ -1,3 +1,4 @@
+import 'package:dulceria/modules/Order/adapters/screens/resumen.dart';
 import 'package:dulceria/modules/home.dart';
 import 'package:dulceria/modules/login/adapters/screens/Account.dart';
 import 'package:dulceria/modules/login/adapters/screens/Login.dart';
@@ -12,7 +13,7 @@ class RegisterProductoNavigation extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/registerProduct',
       routes: {
-        '/registerProduct': (context) => const RegisterProduct(),
+        '/registerProduct': (context) => const Resumen(),
       },
     );
   }

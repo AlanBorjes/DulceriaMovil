@@ -6,5 +6,6 @@ class ColorsApp {
   static const dangerColor = Color(0xFFdc3545);
   static const secondaryColor = Color(0xFF563d7c);
   static const warningColor = Color(0xFFffc107);
-  static const whiteColor = Color(0x0000000);
+  static const whiteColor = Color.fromARGB(0, 255, 255, 255);
+  static const backGround = Color(0xFFF5F5F5);
 }

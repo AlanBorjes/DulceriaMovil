@@ -1,4 +1,4 @@
-import 'package:dulceria/config/navigation/account_navigation.dart';
+import 'package:dulceria/config/navigation/store_navigation.dart';
 import 'package:dulceria/config/navigation/account_navigation2.dart';
 import 'package:dulceria/config/navigation/deliver_navigation.dart';
 import 'package:dulceria/config/navigation/home_navigation.dart';

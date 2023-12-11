@@ -1,5 +1,5 @@
-import 'dart:convert';
-
+import 'package:dio/dio.dart';
+import 'package:dulceria/config/dio/module_network.dart';
 import 'package:dulceria/modules/storelist/model/MiDato.dart';
 import 'package:flutter/material.dart';
 
@@ -8,27 +8,48 @@ class StoreList extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: CardListFromJson(),
+        body: CardListFromApi(),
       ),
     );
   }
 }
 
-class CardListFromJson extends StatelessWidget {
-  final String jsonData = '''
-  [
-    {"titulo": "Tienda Juanita", "subtitulo": "Subtítulo 1"},
-    {"titulo": "Título 2", "subtitulo": "Subtítulo 2"},
-    {"titulo": "Título 3", "subtitulo": "Subtítulo 3"}
-  ]
-  ''';
+class CardListFromApi extends StatefulWidget {
+  @override
+  _CardListFromApiState createState() => _CardListFromApiState();
+}
+
+class _CardListFromApiState extends State<CardListFromApi> {
+  late Dio _dio;
+  List<MiDato> miListaDeDatos = [];
+
+  @override
+  void initState() {
+    super.initState();
+    final _dio = NetworkModule().instance;
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    try {
+      final response = await _dio.get('/store/deliver/9');
+      if (response.statusCode == 200) {
+        List<dynamic> data = response.data;
+        setState(() {
+          miListaDeDatos = data.map((item) => MiDato.fromJson(item)).toList();
+        });
+      } else {
+        // Manejar error en la respuesta
+        print('Error en la solicitud: ${response.statusCode}');
+      }
+    } catch (e) {
+      // Manejar excepción
+      print('Error en la solicitud: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> data = jsonDecode(jsonData);
-    List<MiDato> miListaDeDatos =
-        data.map((item) => MiDato.fromJson(item)).toList();
-
     return ListView.builder(
       itemCount: miListaDeDatos.length,
       itemBuilder: (context, index) {

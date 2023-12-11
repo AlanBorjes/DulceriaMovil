@@ -1,4 +1,5 @@
-import 'package:dulceria/modules/Order/adapters/screens/Order.dart';
+import 'package:dulceria/modules/Order/adapters/screens/Order1.dart';
+import 'package:dulceria/modules/Order/adapters/screens/make_order.dart';
 import 'package:dulceria/modules/deliverMan/adapters/screens/delivery.dart';
 import 'package:dulceria/modules/store_info/adapters/screens/store_info.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class OrderNavigation extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/order',
       routes: {
-        '/order': (context) => const Pedidos(),
+        '/order': (context) => const MakeOrder(),
       },
     );
   }

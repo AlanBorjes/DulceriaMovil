@@ -1,3 +1,4 @@
+import 'package:dulceria/kernel/colors/colors_app.dart';
 import 'package:dulceria/modules/home.dart';
 import 'package:dulceria/modules/login/adapters/screens/Login.dart';
 import 'package:dulceria/modules/products/adapters/screens/products.dart';
@@ -8,9 +9,15 @@ class ProductNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/product',
-      routes: {'/product': (context) => const Products()},
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Input con Botones'),
+        ),
+        body: Center(
+          child: Text('0')
+        ),
+      ),
     );
   }
 }
+
